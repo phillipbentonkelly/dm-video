@@ -1,0 +1,67 @@
+// *
+// * Boston.com | Digital Marketplaces bdc-screen-dev.scss
+// * Brings in all partials to generate a single CSS file
+// * This file should only contain @import rules
+// * Dependencies should be listed
+// *
+
+// * NOTE: This file is currently the dev file for the re-write
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// @font-face Rules
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@import 'partials/font-face';
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Reset Styles
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@import 'partials/reset';
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Base SCSS
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@import 'base';
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Element Default Styles
+// * Dependencies: 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@import 'partials/element-defaults';
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Common Assets
+// * Dependencies: 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@import 'helpers/common-assets';
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Page - Masthead Styles
+// * Dependencies: 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@import 'partials/page/page-masthead';
+@import 'partials/page/page-header';
+@import 'partials/page/page-nav';
+@import 'partials/page/page-layout';
+@import 'partials/page/page-footer';
+@import 'partials/page/page-search';
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Page - Footer Styles
+// * Dependencies: bdc-base
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@import 'partials/page/page-footer';
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Page - Module Styles
+// * Dependencies: bdc-base
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@import 'partials/page/modules/mega-menu';
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Content Styles
+// * Dependencies: bdc-base
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+@import 'partials/page-content/modules/content-footer';
+@import 'partials/page-content/modules/category-footer';
+
+
