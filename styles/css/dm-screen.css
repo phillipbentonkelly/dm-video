@@ -1,0 +1,52 @@
+/*
+Error: File to import not found or unreadable: partials/page-content/modules/content-footer.
+       Load path: /Users/phillip.kelly/Dropbox/Development/Github/PBK/dm-video
+        on line 64 of styles/sass/dm-screen.scss
+
+59: 
+60: // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+61: // Content Styles
+62: // * Dependencies: bdc-base
+63: // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+64: @import 'partials/page-content/modules/content-footer';
+65: @import 'partials/page-content/modules/category-footer';
+
+Backtrace:
+styles/sass/dm-screen.scss:64
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/import_node.rb:66:in `rescue in import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/import_node.rb:45:in `import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:301:in `visit_import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/stack.rb:79:in `block in with_base'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:52:in `map'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/root_node.rb:20:in `render'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/engine.rb:268:in `render'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/exec/sass_scss.rb:404:in `run'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/exec/sass_scss.rb:62:in `process_result'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/exec/base.rb:52:in `parse'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/exec/base.rb:19:in `parse!'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/bin/sass:13:in `<top (required)>'
+/usr/bin/sass:23:in `load'
+/usr/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: partials/page-content/modules/content-footer.\A        Load path: /Users/phillip.kelly/Dropbox/Development/Github/PBK/dm-video\A         on line 64 of styles/sass/dm-screen.scss\A \A 59: \A 60: // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\A 61: // Content Styles\A 62: // * Dependencies: bdc-base\A 63: // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\A 64: @import 'partials/page-content/modules/content-footer';\A 65: @import 'partials/page-content/modules/category-footer';"; }
