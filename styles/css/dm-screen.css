@@ -1,9 +1,8 @@
 /*
-Error: File to import not found or unreadable: partials/page-content/modules/content-footer.
+Error: File to import not found or unreadable: partials/page-content/modules/category-footer.
        Load path: /Users/phillip.kelly/Dropbox/Development/Github/PBK/dm-video
-        on line 64 of styles/sass/dm-screen.scss
+        on line 65 of styles/sass/dm-screen.scss
 
-59: 
 60: // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 61: // Content Styles
 62: // * Dependencies: bdc-base
@@ -12,7 +11,7 @@ Error: File to import not found or unreadable: partials/page-content/modules/con
 65: @import 'partials/page-content/modules/category-footer';
 
 Backtrace:
-styles/sass/dm-screen.scss:64
+styles/sass/dm-screen.scss:65
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/import_node.rb:66:in `rescue in import'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/import_node.rb:45:in `import'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.4.6/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -49,4 +48,4 @@ styles/sass/dm-screen.scss:64
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: partials/page-content/modules/content-footer.\A        Load path: /Users/phillip.kelly/Dropbox/Development/Github/PBK/dm-video\A         on line 64 of styles/sass/dm-screen.scss\A \A 59: \A 60: // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\A 61: // Content Styles\A 62: // * Dependencies: bdc-base\A 63: // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\A 64: @import 'partials/page-content/modules/content-footer';\A 65: @import 'partials/page-content/modules/category-footer';"; }
+  content: "Error: File to import not found or unreadable: partials/page-content/modules/category-footer.\A        Load path: /Users/phillip.kelly/Dropbox/Development/Github/PBK/dm-video\A         on line 65 of styles/sass/dm-screen.scss\A \A 60: // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\A 61: // Content Styles\A 62: // * Dependencies: bdc-base\A 63: // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\A 64: @import 'partials/page-content/modules/content-footer';\A 65: @import 'partials/page-content/modules/category-footer';"; }
