@@ -3,7 +3,7 @@
 clear
 proceedVar=false
 useDefaultLocalhostPath=true
-defaultLocalhostPath='http://localhost/dm/dist/'
+defaultLocalhostPath='http://localhost/dm-video/dist/'
 tempDirName='GH-page-content'
 root=$(pwd)
 yourLocalhost=''
@@ -23,7 +23,7 @@ echo ""
 echo "Would you like to proceed? Y or N | "
 read proceedVar
 
-echo "In order to proceed we need the path to the localhost of your repo. By default, if you are using PHP or other local dev environments, it would be something like this ... http://localhost/dm/dist/. Is http://localhost/dm/dist/ the path to your localhost? Y or N | "
+echo "In order to proceed we need the path to the localhost of your repo. By default, if you are using PHP or other local dev environments, it would be something like this ... http://localhost/dm-video/dist/. Is http://localhost/dm-video/dist/ the path to your localhost? Y or N | "
 read useDefaultLocalhostPath
 
 echo 'yourLocalhost 1: $yourLocalhost'
@@ -32,7 +32,7 @@ if [[ $useDefaultLocalhostPath =~ ^[Yy]$ ]]
 	then
 		yourLocalhost="$defaultLocalhostPath"
 else
-	echo "Please enter/paste the path to the repo's localhost URL: ex. http://localhost/dm/dist/"
+	echo "Please enter/paste the path to the repo's localhost URL: ex. http://localhost/dm-video/dist/"
 	read yourLocalhost
 fi
 
@@ -60,10 +60,10 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			root=$(pwd)
 			localhost="$yourLocalhost$framesetString"
 
-			cp -a -f $root/dm/dist/images/. $root/$tempDirName/images
-			cp -a -f $root/dm/dist/fonts/. $root/$tempDirName/fonts
-			cp -a -f $root/dm/dist/js/. $root/$tempDirName/js
-			cp -a -f $root/dm/dist/styles/. $root/$tempDirName/styles
+			cp -a -f $root/dm-video/dist/images/. $root/$tempDirName/images
+			cp -a -f $root/dm-video/dist/fonts/. $root/$tempDirName/fonts
+			cp -a -f $root/dm-video/dist/js/. $root/$tempDirName/js
+			cp -a -f $root/dm-video/dist/styles/. $root/$tempDirName/styles
 
 			sleep 3
 			for i in "${pages[@]}"
@@ -92,19 +92,19 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			
 			echo "Removing the several resources from the gh-pages repo folder (folders and html pages)."
 			sleep 5
-			rm -r $root/dm/images
-			rm -r $root/dm/fonts
-			rm -r $root/dm/js
-			rm -r $root/dm/styles
-			rm -f $root/dm/articles.html
-			rm -f $root/dm/property-listings.html
-			rm -f $root/dm/property-listing.html
-			rm -f $root/dm/serp.html
-			rm -f $root/dm/category.html
-			rm -f $root/dm/category-details.html
-			rm -f $root/dm/index.html
-			rm -f $root/dm/home.html
-			rm -f $root/dm/neighborhood.html
+			rm -r $root/dm-video/images
+			rm -r $root/dm-video/fonts
+			rm -r $root/dm-video/js
+			rm -r $root/dm-video/styles
+			rm -f $root/dm-video/articles.html
+			rm -f $root/dm-video/property-listings.html
+			rm -f $root/dm-video/property-listing.html
+			rm -f $root/dm-video/serp.html
+			rm -f $root/dm-video/category.html
+			rm -f $root/dm-video/category-details.html
+			rm -f $root/dm-video/index.html
+			rm -f $root/dm-video/home.html
+			rm -f $root/dm-video/neighborhood.html
 
 			echo "Copying the content of the temporary folder into the gh-pages repo folder."
 			sleep 5
