@@ -117,22 +117,16 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			git status
 			cd ..
 			
-			echo "Removing the several resources from the gh-pages repo folder (folders and html pages)."
-			sleep 5
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Removing the several resources from the gh-pages repo folder (folders and html pages).'
+			#echo "Removing the several resources from the gh-pages repo folder (folders and html pages)."
+			#sleep 5
+			#terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Removing the several resources from the gh-pages repo folder (folders and html pages).'
 			#rm -r $root/dm-video/images
 			#rm -r $root/dm-video/fonts
 			#rm -r $root/dm-video/js
 			#rm -r $root/dm-video/styles
 			#rm -f $root/dm-video/articles.html
-			#rm -f $root/dm-video/property-listings.html
-			#rm -f $root/dm-video/property-listing.html
-			#rm -f $root/dm-video/serp.html
-			#rm -f $root/dm-video/category.html
-			#rm -f $root/dm-video/category-details.html
-			#rm -f $root/dm-video/index.html
 			#rm -f $root/dm-video/home.html
-			#rm -f $root/dm-video/neighborhood.html
+			#rm -f $root/dm-video/index.html
 
 			echo "Copying the content of the temporary folder into the gh-pages repo folder."
 			sleep 5
