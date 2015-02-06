@@ -12,8 +12,8 @@ root=$(pwd)
 yourLocalhost=''
 localhost=''
 framesetString='frameset.php?page-type='
-pages=("articles" "neighborhood" "serp" "home" "property-listings" "category" "category-details" "property-listings-premium")
-phpModules=("carousel" "gallery-dev" "mega-menu-dev")
+pages=("home")
+phpModules=("videojs")
 tempModulueName=''
 phpExtension='.php'
 dist='/dist/'
