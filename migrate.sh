@@ -44,7 +44,7 @@ fi
 
 if [[ $proceedVar =~ ^[Yy]$ ]]
 	then
-		tempDirName="$repo$tempDirNameString"
+		tempDirName="$repoName$tempDirNameString"
 
 		git checkout gh-pages
 		echo "- Switched to Pages branch"
@@ -68,10 +68,10 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			root=$(pwd)
 			localhost="$yourLocalhost$framesetString"
 
-			cp -a -f $root/dm-video/dist/images/. $root/$tempDirName/images
-			cp -a -f $root/dm-video/dist/fonts/. $root/$tempDirName/fonts
-			cp -a -f $root/dm-video/dist/js/. $root/$tempDirName/js
-			cp -a -f $root/dm-video/dist/styles/. $root/$tempDirName/styles
+			cp -a -f $root/$repoName/dist/images/. $root/$tempDirName/images
+			cp -a -f $root/$repoName/dist/fonts/. $root/$tempDirName/fonts
+			cp -a -f $root/$repoName/dist/js/. $root/$tempDirName/js
+			cp -a -f $root/$repoName/dist/styles/. $root/$tempDirName/styles
 
 
 			#sleep 3
