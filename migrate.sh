@@ -108,7 +108,7 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 
 			sleep 5
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Checking GH-Pages branch'
-			cd dm
+			cd $repoName
 			git checkout gh-pages
 			git status
 			git stash
@@ -145,7 +145,7 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 
 			sleep 5
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Add/Remove ... Commit/Push changes to the GH-Pages branch'
-			cd dm
+			cd $repoName
 			git status
 			git add --all
 			git status
