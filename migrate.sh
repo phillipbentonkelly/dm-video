@@ -7,7 +7,6 @@ rootHost='http://localhost/dm-video/dist/'
 defaultLocalhostPath='http://localhost/dm-video/dist/'
 repoName='dm-video'
 tempDirNameString='GH-page-content'
-tempDirName=$repo$tempDirNameString
 root=$(pwd)
 yourLocalhost=''
 localhost=''
@@ -45,6 +44,8 @@ fi
 
 if [[ $proceedVar =~ ^[Yy]$ ]]
 	then
+		tempDirName="$repo$tempDirNameString"
+
 		git checkout gh-pages
 		echo "- Switched to Pages branch"
 
@@ -73,37 +74,37 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			cp -a -f $root/dm-video/dist/styles/. $root/$tempDirName/styles
 
 
-			sleep 3
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Module Pages'
-			for g in "${phpModules[@]}"
-			do
-				$tempModulueName="$g.php"
-				echo "$rootHost$g$phpExtension"
-				wget "$rootHost$g$phpExtension"
-				sleep 1
-				mv -f $g$phpExtension $root/$tempDirName/$g.html
+			#sleep 3
+			#terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Module Pages'
+			#for g in "${phpModules[@]}"
+			#do
+				#$tempModulueName="$g.php"
+				#echo "$rootHost$g$phpExtension"
+				#wget "$rootHost$g$phpExtension"
+				#sleep 1
+				#mv -f $g$phpExtension $root/$tempDirName/$g.html
 
-				echo ""
-				echo "---------------------------------------------"
-				echo ""
-			done
+				#echo ""
+				#echo "---------------------------------------------"
+				#echo ""
+			#done
 
-			sleep 3
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages'
-			for i in "${pages[@]}"
-			do
-				echo $localhost$i
-				wget $localhost$i
-				sleep 1
-				mv -f $framesetString$i $root/$tempDirName/$i.html
+			#sleep 3
+			#terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages'
+			#for i in "${pages[@]}"
+			#do
+				#echo $localhost$i
+				#wget $localhost$i
+				#sleep 1
+				#mv -f $framesetString$i $root/$tempDirName/$i.html
 
-				echo ""
-				echo "---------------------------------------------"
-				echo ""
-			done
+				#echo ""
+				#echo "---------------------------------------------"
+				#echo ""
+			#done
 
 			cd $tempDirName
-			cp -f home.html index.html
+			#cp -f home.html index.html
 			cd ..
 
 			sleep 5
@@ -119,19 +120,19 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			echo "Removing the several resources from the gh-pages repo folder (folders and html pages)."
 			sleep 5
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Removing the several resources from the gh-pages repo folder (folders and html pages).'
-			rm -r $root/dm-video/images
-			rm -r $root/dm-video/fonts
-			rm -r $root/dm-video/js
-			rm -r $root/dm-video/styles
-			rm -f $root/dm-video/articles.html
-			rm -f $root/dm-video/property-listings.html
-			rm -f $root/dm-video/property-listing.html
-			rm -f $root/dm-video/serp.html
-			rm -f $root/dm-video/category.html
-			rm -f $root/dm-video/category-details.html
-			rm -f $root/dm-video/index.html
-			rm -f $root/dm-video/home.html
-			rm -f $root/dm-video/neighborhood.html
+			#rm -r $root/dm-video/images
+			#rm -r $root/dm-video/fonts
+			#rm -r $root/dm-video/js
+			#rm -r $root/dm-video/styles
+			#rm -f $root/dm-video/articles.html
+			#rm -f $root/dm-video/property-listings.html
+			#rm -f $root/dm-video/property-listing.html
+			#rm -f $root/dm-video/serp.html
+			#rm -f $root/dm-video/category.html
+			#rm -f $root/dm-video/category-details.html
+			#rm -f $root/dm-video/index.html
+			#rm -f $root/dm-video/home.html
+			#rm -f $root/dm-video/neighborhood.html
 
 			echo "Copying the content of the temporary folder into the gh-pages repo folder."
 			sleep 5
