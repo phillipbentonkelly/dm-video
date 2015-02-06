@@ -3,6 +3,7 @@
 clear
 proceedVar=false
 useDefaultLocalhostPath=true
+rootHost='http://localhost/dm-video/dist/'
 defaultLocalhostPath='http://localhost/dm-video/dist/'
 tempDirName='GH-page-content'
 root=$(pwd)
@@ -10,6 +11,10 @@ yourLocalhost=''
 localhost=''
 framesetString='frameset.php?page-type='
 pages=("articles" "neighborhood" "serp" "home" "property-listings" "category" "category-details" "property-listings-premium")
+phpModules=("carousel" "gallery-dev" "mega-menu-dev")
+tempModulueName=''
+phpExtension='.php'
+dist='/dist/'
 
 echo "Welcome ... you are currently in: " 
 pwd
@@ -65,7 +70,24 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			cp -a -f $root/dm-video/dist/js/. $root/$tempDirName/js
 			cp -a -f $root/dm-video/dist/styles/. $root/$tempDirName/styles
 
+
 			sleep 3
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Module Pages'
+			for g in "${phpModules[@]}"
+			do
+				$tempModulueName="$g.php"
+				echo "$rootHost$g$phpExtension"
+				wget "$rootHost$g$phpExtension"
+				sleep 1
+				mv -f $g$phpExtension $root/$tempDirName/$g.html
+
+				echo ""
+				echo "---------------------------------------------"
+				echo ""
+			done
+
+			sleep 3
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages'
 			for i in "${pages[@]}"
 			do
 				echo $localhost$i
@@ -83,15 +105,18 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			cd ..
 
 			sleep 5
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Checking GH-Pages branch'
 			cd dm
 			git checkout gh-pages
 			git status
+			git stash
 			git pull
 			git status
 			cd ..
 			
 			echo "Removing the several resources from the gh-pages repo folder (folders and html pages)."
 			sleep 5
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Removing the several resources from the gh-pages repo folder (folders and html pages).'
 			rm -r $root/dm-video/images
 			rm -r $root/dm-video/fonts
 			rm -r $root/dm-video/js
@@ -108,13 +133,16 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 
 			echo "Copying the content of the temporary folder into the gh-pages repo folder."
 			sleep 5
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Copying the content of the temporary folder into the gh-pages repo folder.'
 			cp -a -f $root/$tempDirName/. $root/dm
 
 			sleep 5
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Removing temporary folder'
 			echo "Removing temporary folder"
 			rm -r $root/$tempDirName
 
 			sleep 5
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Add/Remove ... Commit/Push changes to the GH-Pages branch'
 			cd dm
 			git status
 			git add --all
@@ -123,6 +151,7 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			git push
 
 			sleep 5
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Checking out Master branch'
 			git checkout master
 
 			echo ""
@@ -130,6 +159,7 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 
 			sleep 6
 			echo "DONE! Check your repo to make sure all folders match what is suppose to be in that branch."
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'DONE!!!'
 		fi
 fi
 
