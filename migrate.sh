@@ -103,19 +103,19 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 				#echo ""
 			#done
 
-			cd $tempDirName
+			#cd $tempDirName
 			#cp -f home.html index.html
-			cd ..
+			#cd ..
 
-			sleep 5
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Checking GH-Pages branch'
-			cd $repoName
-			git checkout gh-pages
-			git status
-			git stash
-			git pull
-			git status
-			cd ..
+			#sleep 5
+			#terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Checking GH-Pages branch'
+			#cd $repoName
+			#git checkout gh-pages
+			#git status
+			#git stash
+			#git pull
+			#git status
+			#cd ..
 			
 			#echo "Removing the several resources from the gh-pages repo folder (folders and html pages)."
 			#sleep 5
@@ -128,35 +128,35 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			#rm -f $root/dm-video/home.html
 			#rm -f $root/dm-video/index.html
 
-			echo "Copying the content of the temporary folder into the gh-pages repo folder."
-			sleep 5
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Copying the content of the temporary folder into the gh-pages repo folder.'
-			cp -a -f $root/$tempDirName/. $root/dm
+			#echo "Copying the content of the temporary folder into the gh-pages repo folder."
+			#sleep 5
+			#terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Copying the content of the temporary folder into the gh-pages repo folder.'
+			#cp -a -f $root/$tempDirName/. $root/dm
 
-			sleep 5
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Removing temporary folder'
-			echo "Removing temporary folder"
-			rm -r $root/$tempDirName
+			#sleep 5
+			#terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Removing temporary folder'
+			#echo "Removing temporary folder"
+			#rm -r $root/$tempDirName
 
-			sleep 5
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Add/Remove ... Commit/Push changes to the GH-Pages branch'
-			cd $repoName
-			git status
-			git add --all
-			git status
-			git commit -a -m "Updated GH-Pages with the latest version of this repo that can be used for QA."
-			git push
+			#sleep 5
+			#terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Add/Remove ... Commit/Push changes to the GH-Pages branch'
+			#cd $repoName
+			#git status
+			#git add --all
+			#git status
+			#git commit -a -m "Updated GH-Pages with the latest version of this repo that can be used for QA."
+			#git push
 
-			sleep 5
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Checking out Master branch'
-			git checkout master
+			#sleep 5
+			#terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Checking out Master branch'
+			#git checkout master
 
-			echo ""
-			echo $root
+			#echo ""
+			#echo $root
 
-			sleep 6
-			echo "DONE! Check your repo to make sure all folders match what is suppose to be in that branch."
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'DONE!!!'
+			#sleep 6
+			#echo "DONE! Check your repo to make sure all folders match what is suppose to be in that branch."
+			#terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'DONE!!!'
 		fi
 fi
 
