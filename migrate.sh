@@ -29,7 +29,7 @@ echo ""
 echo "Would you like to proceed? Y or N | "
 read proceedVar
 
-echo "In order to proceed we need the path to the localhost of your repo. By default, if you are using PHP or other local dev environments, it would be something like this ... http://localhost/dm/dist/. Is http://localhost/dm/dist/ the path to your localhost? Y or N | "
+echo "In order to proceed we need the path to the localhost of your repo. By default, if you are using PHP or other local dev environments, it would be something like this ... http://localhost/dm/dist/. Is http://localhost/$repoName$dist the path to your localhost? Y or N | "
 read useDefaultLocalhostPath
 
 echo 'yourLocalhost 1: $yourLocalhost'
@@ -38,7 +38,7 @@ if [[ $useDefaultLocalhostPath =~ ^[Yy]$ ]]
 	then
 		yourLocalhost="$defaultLocalhostPath"
 else
-	echo "Please enter/paste the path to the repo's localhost URL: ex. http://localhost/dm/dist/"
+	echo "Please enter/paste the path to the repo's localhost URL: ex. http://localhost/$repoName$dist"
 	read yourLocalhost
 fi
 
@@ -73,10 +73,10 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			root=$(pwd)
 			localhost="$yourLocalhost$framesetString"
 
-			cp -a -f $root/dm/dist/images/. $root/$tempDirName/images
-			cp -a -f $root/dm/dist/fonts/. $root/$tempDirName/fonts
-			cp -a -f $root/dm/dist/js/. $root/$tempDirName/js
-			cp -a -f $root/dm/dist/styles/. $root/$tempDirName/styles
+			cp -a -f $root/$repoName/dist/images/. $root/$tempDirName/images
+			cp -a -f $root/$repoName/dist/fonts/. $root/$tempDirName/fonts
+			cp -a -f $root/$repoName/dist/js/. $root/$tempDirName/js
+			cp -a -f $root/$repoName/dist/styles/. $root/$tempDirName/styles
 
 
 			
