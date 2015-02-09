@@ -45,6 +45,7 @@ fi
 if [[ $proceedVar =~ ^[Yy]$ ]]
 	then
 		tempDirName="$repoName$tempDirNameString"
+		echo "tempDirName: $tempDirName"
 
 		terminal-notifier -sound default -title 'Git: Migrating' -message 'Switching to gh-pages to pull updates and stash changes.'
 		git checkout gh-pages
