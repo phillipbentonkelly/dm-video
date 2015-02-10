@@ -5,7 +5,7 @@ repoName='dm-video'
 dist='/dist/'
 rootHost='http://localhost/$repoName$dist'
 defaultLocalhostPath='http://localhost/$repoName$dist'
-tempDirNameString='GH-page-content'
+tempDirNameString='__GH-page-content'
 proceedVar=false
 useDefaultLocalhostPath=true
 tempDirName='GH-page-content'
@@ -30,7 +30,7 @@ echo ""
 echo "Would you like to proceed? Y or N | "
 read proceedVar
 
-echo "In order to proceed we need the path to the localhost of your repo. By default, if you are using PHP or other local dev environments, it would be something like this ... http://localhost/dm/dist/. Is http://localhost/$repoName$dist the path to your localhost? Y or N | "
+echo "In order to proceed we need the path to the localhost of your repo. By default, if you are using PHP or other local dev environments, it would be something like this ... http://localhost/$repoName/dist/. Is http://localhost/$repoName$dist the path to your localhost? Y or N | "
 read useDefaultLocalhostPath
 
 echo 'yourLocalhost 1: $yourLocalhost'
@@ -79,7 +79,89 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			cp -a -f $root/$repoName/dist/js/. $root/$tempDirName/js
 			cp -a -f $root/$repoName/dist/styles/. $root/$tempDirName/styles
 
+			sleep 3
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Module Pages'
+			for g in "${phpModules[@]}"
+			do
+				$tempModulueName="$g.php"
+				echo "$rootHost$g$phpExtension"
+				wget "$rootHost$g$phpExtension"
+				sleep 1
+				mv -f $g$phpExtension $root/$tempDirName/$g.html
 
+				echo ""
+				echo "---------------------------------------------"
+				echo ""
+			done
+
+			sleep 3
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages'
+			for i in "${pages[@]}"
+			do
+				echo $localhost$i
+				wget $localhost$i
+				sleep 1
+				mv -f $framesetString$i $root/$tempDirName/$i.html
+
+				echo ""
+				echo "---------------------------------------------"
+				echo ""
+			done
+
+			cd $tempDirName
+			cp -f home.html index.html
+			cd ..
+
+			sleep 5
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Checking GH-Pages branch'
+			cd $repoName
+			git checkout gh-pages
+			git status
+			git stash
+			git pull
+			git status
+			cd ..
+			
+			echo "Removing the several resources from the gh-pages repo folder (folders and html pages)."
+			sleep 5
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Removing the several resources from the gh-pages repo folder (folders and html pages).'
+			rm -r $root/$repoName/images
+			rm -r $root/$repoName/fonts
+			rm -r $root/$repoName/js
+			rm -r $root/$repoName/styles
+			rm -f $root/$repoName/articles.html
+			rm -f $root/$repoName/home.html
+			rm -f $root/$repoName/index.html
+
+			echo "Copying the content of the temporary folder into the gh-pages repo folder."
+			sleep 5
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Copying the content of the temporary folder into the gh-pages repo folder.'
+			cp -a -f $root/$tempDirName/. $root/$repoName
+
+			sleep 5
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Removing temporary folder'
+			echo "Removing temporary folder"
+			rm -r $root/$tempDirName
+
+			sleep 5
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Add/Remove ... Commit/Push changes to the GH-Pages branch'
+			cd $repoName
+			git status
+			git add --all
+			git status
+			git commit -a -m "Updated GH-Pages with the latest version of this repo that can be used for QA."
+			git push
+
+			sleep 5
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Checking out Master branch'
+			git checkout master
+
+			echo ""
+			echo $root
+
+			sleep 6
+			echo "DONE! Check your repo to make sure all folders match what is suppose to be in that branch."
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'DONE!!!'
 			
 		fi
 fi
