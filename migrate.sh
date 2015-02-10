@@ -5,6 +5,7 @@ repoName='dm-video'
 dist='/dist/'
 rootHost='http://localhost/$repoName$dist'
 defaultLocalhostPath='http://localhost/$repoName$dist'
+tempDirNameString='GH-page-content'
 proceedVar=false
 useDefaultLocalhostPath=true
 tempDirName='GH-page-content'
