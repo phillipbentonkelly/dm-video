@@ -1,25 +1,32 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html>
+ 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    
-    <!-- STYLING -->
-    <link rel="stylesheet" href="styles/css/dm-screen.css" />
-        
-    <style>
-        body { padding-bottom: 10%; }
-    </style>
-    
-    <!-- SCRIPTS -->
-    <script src="js/resources/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Untitled Document</title>
+  <style>
+    .video-js {
+      height: 344px;
+      width: 610px;
+    }
+  </style>
+  <link href="//players.brightcove.net/videojs-overlay/lib/videojs-overlay.css" rel='stylesheet'>
 </head>
-    <body class="home">
+ 
+<body>
+   <video
+  data-account="245991542"
+  data-player="e4e7f4b2-cbf2-4f62-831b-6f43d6b7ed25"
+  data-embed="default"
+  data-video-id="4045097857001"
+  class="video-js" controls>
+  </video>
+    <script src="//players.brightcove.net/245991542/e4e7f4b2-cbf2-4f62-831b-6f43d6b7ed25_default/index.min.js"></script>
+ 
+    <script src="//players.brightcove.net/1507807800001/039eecc2-28ef-493c-aeef-306ed50896ca_default/index.min.js"></script>
+  
+    <script src="//players.brightcove.net/videojs-overlay/lib/videojs-overlay.js"></script>
+    
 
-    </body>
+</body> 
 </html>
