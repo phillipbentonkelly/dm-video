@@ -1,0 +1,64 @@
+// *
+// * Page Footer
+// *
+
+$module-name: 'video-js';
+
+// ------------------------------------------------------------
+// Default Styles
+// ------------------------------------------------------------
+
+.#{$module-name} {
+    height: 344px;
+    width: 610px;
+
+    .vjs-play-progress {
+    	background-color: rgba(69,69,72,.3);
+
+    	-webkit-border-radius: 2px;
+		-moz-border-radius: 2px;
+		border-radius: 2px;
+    }
+		.vjs-progress-holder:before {
+			height: 4px;
+			-webkit-border-radius: 2px;
+			-moz-border-radius: 2px;
+			border-radius: 2px;
+		}
+
+	.vjs-play-progress, .vjs-volume-level {
+		background: rgba(250,99,78,0.6);
+	}
+
+    .vjs-big-play-button{
+	    display: none;
+	}
+
+}
+
+
+
+
+
+
+
+// ------------------------------------------------------------
+// Desktop Breakpoint
+// ------------------------------------------------------------
+
+@include media-query(desktop) {
+	.#{$module-name} {
+		
+	}
+}
+
+// ------------------------------------------------------------
+// Tablet Breakpoint
+// ------------------------------------------------------------
+
+@include media-query(tablet) {
+	.#{$module-name} {
+		//height: $page-nav-desktop-height;
+		//position: initial;		
+	}
+}

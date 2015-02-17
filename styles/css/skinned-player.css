@@ -1,0 +1,423 @@
+@font-face {
+  font-family: "Avenir";
+  src: url("../../fonts/avenir.ttf") format("truetype"), url("../../fonts/avenir.otf") format("opentype");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url("../../fonts/OpenSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "OpenSans Regular";
+  src: url("../../fonts/OpenSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "OpenSans Italic";
+  src: url("../../fonts/OpenSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "OpenSans Bold";
+  src: url("../../fonts/OpenSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "OpenSans Extra Bold";
+  src: url("../../fonts/OpenSans-ExtraBold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "OpenSans Extra Bold Italic";
+  src: url("../../fonts/OpenSans-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "OpenSans Semibold";
+  src: url("../../fonts/OpenSans-Semibold.ttf") format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "OpenSans Semibold Italic";
+  src: url("../../fonts/OpenSans-SemiboldItalic.ttf") format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "OpenSans Light";
+  src: url("../../fonts/OpenSans-Light.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "OpenSans Light Italic";
+  src: url("../../fonts/OpenSans-LightItalic.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Oswald Regular";
+  src: url("../../fonts/Oswald-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Oswald Bold";
+  src: url("../../fonts/Oswald-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Oswald Light";
+  src: url("../../fonts/Oswald-Light.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Oswald Stencil";
+  src: url("../../fonts/Oswald-Stencil.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../../fonts/HelveticaNeue.eot?#iefix") format("embedded-opentype"), url("../../fonts/HelveticaNeue.woff") format("woff"), url("../../fonts/HelveticaNeue.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Helvetica Neue Bold";
+  src: url("../../fonts/HelveticaNeue-Bold.eot?#iefix") format("embedded-opentype"), url("../../fonts/HelveticaNeue-Bold.woff") format("woff"), url("../../fonts/HelveticaNeue-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+/* line 4, ../sass/partials/_reset.scss */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* line 24, ../sass/partials/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 31, ../sass/partials/_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 34, ../sass/partials/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 39, ../sass/partials/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 131, ../sass/helpers/_mixins-and-extends.scss */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* line 142, ../sass/helpers/_mixins-and-extends.scss */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* line 160, ../sass/helpers/_mixins-and-extends.scss */
+.overlays .iconOverlay, .adSlots .adSlot .iconOverlay {
+  position: absolute;
+  z-index: 1;
+}
+/* line 164, ../sass/helpers/_mixins-and-extends.scss */
+.overlays .topSpacing, .adSlots .adSlot .topSpacing {
+  top: 3%;
+}
+/* line 167, ../sass/helpers/_mixins-and-extends.scss */
+.overlays .leftSpacing, .adSlots .adSlot .leftSpacing {
+  left: 6%;
+}
+
+/* line 179, ../sass/helpers/_mixins-and-extends.scss */
+.adSlots {
+  margin: auto;
+  display: block;
+  min-height: 250px;
+  overflow: hidden;
+  clear: both;
+}
+/* line 186, ../sass/helpers/_mixins-and-extends.scss */
+.adSlots .adSlot {
+  display: block;
+  width: 300px;
+  height: 250px;
+  margin: 0;
+  margin: auto;
+  position: relative;
+  /*border: 1px solid #ccc;*/
+  margin-bottom: 30px;
+}
+/* line 196, ../sass/helpers/_mixins-and-extends.scss */
+.adSlots .adSlot .category-tag {
+  position: absolute;
+  z-index: 101;
+}
+/* line 203, ../sass/helpers/_mixins-and-extends.scss */
+.adSlots .adSlot .detailsWrapper {
+  width: 100%;
+  clear: both;
+  min-height: 10%;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+/* line 213, ../sass/helpers/_mixins-and-extends.scss */
+.adSlots .adSlot .detailsWrapper .detailsArrow {
+  display: none;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 25px 20px 25px;
+  border-color: rgba(0, 0, 0, 0.6) transparent;
+  float: right;
+}
+/* line 223, ../sass/helpers/_mixins-and-extends.scss */
+.adSlots .adSlot .detailsWrapper .detailsOverlay {
+  width: 93%;
+  min-height: 20%;
+  padding: 4% 5% 3% 3%;
+  color: #fff;
+  font-size: 0.7em;
+  letter-spacing: 1px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  background-color: rgba(0, 0, 0, 0.6);
+  clear: both;
+}
+/* line 235, ../sass/helpers/_mixins-and-extends.scss */
+.adSlots .adSlot .detailsWrapper .detailsOverlay h1 {
+  font-size: 2em;
+  font-weight: 500;
+  text-align: left;
+  padding: 0 0 0.5em 0;
+  margin: 0 0 0 0;
+  line-height: 26px;
+  clear: both;
+  min-height: 10px;
+  overflow: hidden;
+}
+/* line 246, ../sass/helpers/_mixins-and-extends.scss */
+.adSlots .adSlot .detailsWrapper .detailsOverlay h1 span.col {
+  width: 60%;
+}
+/* line 250, ../sass/helpers/_mixins-and-extends.scss */
+.adSlots .adSlot .detailsWrapper .detailsOverlay h1 .priceSpan {
+  float: right;
+  width: 40%;
+  text-align: right;
+}
+/* line 256, ../sass/helpers/_mixins-and-extends.scss */
+.adSlots .adSlot .detailsWrapper .detailsOverlay p {
+  display: none;
+  font-family: OpenSans;
+  font-size: 13px;
+  line-height: 18px;
+  padding: 0 0 0.5em 0;
+  margin: 0 0 0 0;
+}
+/* line 267, ../sass/helpers/_mixins-and-extends.scss */
+.adSlots .adSlot:hover .detailsWrapper .detailsOverlay p {
+  display: block;
+}
+
+@media (min-width: 960px) {
+  /* line 274, ../sass/helpers/_mixins-and-extends.scss */
+  .adSlots .adSlot {
+    float: left;
+    margin-right: 0px;
+  }
+  /* line 280, ../sass/helpers/_mixins-and-extends.scss */
+  .adSlots .adSlot .detailsWrapper .detailsOverlay h1 {
+    font-size: 18px;
+  }
+  /* line 283, ../sass/helpers/_mixins-and-extends.scss */
+  .adSlots .adSlot .detailsWrapper .detailsOverlay h1 .priceSpan {
+    width: 40%;
+  }
+  /* line 290, ../sass/helpers/_mixins-and-extends.scss */
+  .adSlots .adSlot:first-child {
+    float: left;
+    margin-right: 30px;
+  }
+  /* line 295, ../sass/helpers/_mixins-and-extends.scss */
+  .adSlots a.adSlot:first-child {
+    margin: 0px;
+  }
+}
+@media (min-width: 768px) {
+  /* line 303, ../sass/helpers/_mixins-and-extends.scss */
+  .adSlots .adSlot {
+    float: left;
+    margin-left: 30px;
+  }
+  /* line 309, ../sass/helpers/_mixins-and-extends.scss */
+  .adSlots .adSlot .detailsWrapper .detailsOverlay h1 {
+    font-size: 18px;
+  }
+  /* line 312, ../sass/helpers/_mixins-and-extends.scss */
+  .adSlots .adSlot .detailsWrapper .detailsOverlay h1 .priceSpan {
+    width: 40%;
+  }
+  /* line 320, ../sass/helpers/_mixins-and-extends.scss */
+  .adSlots a.adSlot:first-child {
+    margin-left: 0;
+  }
+}
+/* line 333, ../sass/helpers/_mixins-and-extends.scss */
+.social-icons {
+  clear: both;
+  min-width: 200px;
+  min-height: 21px;
+  overflow: hidden;
+}
+/* line 339, ../sass/helpers/_mixins-and-extends.scss */
+.social-icons a {
+  display: inline-block;
+  text-indent: -900px;
+  min-width: 9px;
+  height: 21px;
+  margin-right: 10px;
+  background-image: url(../../images/icons/sprites/social-icons.png);
+  background-repeat: no-repeat;
+}
+/* line 349, ../sass/helpers/_mixins-and-extends.scss */
+.social-icons__facebook {
+  width: 9px;
+  background-position: 0px 0px !important;
+}
+/* line 354, ../sass/helpers/_mixins-and-extends.scss */
+.social-icons__twitter {
+  width: 22px;
+  background-position: -20px 0px !important;
+}
+/* line 359, ../sass/helpers/_mixins-and-extends.scss */
+.social-icons__share {
+  width: 23px;
+  background-position: -48px 0px !important;
+}
+/* line 364, ../sass/helpers/_mixins-and-extends.scss */
+.social-icons__email {
+  width: 27px;
+  background-position: -81px 0px !important;
+}
+/* line 369, ../sass/helpers/_mixins-and-extends.scss */
+.social-icons__comments {
+  width: 27px;
+  height: 27px !important;
+  background-image: url(../../images/icons/comment.png) !important;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+/* line 377, ../sass/helpers/_mixins-and-extends.scss */
+.social-icons__print {
+  width: 22px;
+  background-position: -147px 0px !important;
+}
+/* line 382, ../sass/helpers/_mixins-and-extends.scss */
+.social-icons__favorite {
+  width: 21px;
+  background-position: -179px 0px !important;
+}
+
+/* line 397, ../sass/helpers/_mixins-and-extends.scss */
+.chevron::before {
+  color: #fff;
+  border-style: solid;
+  border-width: 0.20em 0.20em 0 0;
+  content: '';
+  display: inline-block;
+  height: 1em;
+  left: 0.15em;
+  position: relative;
+  top: 0.4em;
+  transform: rotate(-45deg);
+  vertical-align: top;
+  width: 1em;
+  font-family: arial, sans-serif;
+  font-size: 15px;
+}
+
+/* line 415, ../sass/helpers/_mixins-and-extends.scss */
+.chevron.right:before {
+  left: 0;
+  transform: rotate(45deg);
+}
+
+/* line 420, ../sass/helpers/_mixins-and-extends.scss */
+.chevron.bottom:before {
+  top: 0;
+  transform: rotate(135deg);
+}
+
+/* line 425, ../sass/helpers/_mixins-and-extends.scss */
+.chevron.left:before {
+  left: 0.25em;
+  transform: rotate(-135deg);
+}
+
+/* line 11, ../sass/partials/modules/_player-ui.scss */
+.video-js {
+  height: 344px;
+  width: 610px;
+}
+/* line 15, ../sass/partials/modules/_player-ui.scss */
+.video-js .vjs-play-progress {
+  background-color: rgba(69, 69, 72, 0.3);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+/* line 22, ../sass/partials/modules/_player-ui.scss */
+.video-js .vjs-progress-holder:before {
+  height: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+/* line 29, ../sass/partials/modules/_player-ui.scss */
+.video-js .vjs-play-progress, .video-js .vjs-volume-level {
+  background: rgba(250, 99, 78, 0.6);
+}
+/* line 33, ../sass/partials/modules/_player-ui.scss */
+.video-js .vjs-big-play-button {
+  display: none;
+}
