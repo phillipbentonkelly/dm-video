@@ -1,10 +1,11 @@
 #!/bin/sh
 
 clear
+hostStart='http://localhost/'
 repoName='dm-video'
 dist='/dist/'
-rootHost='http://localhost/$repoName$dist'
-defaultLocalhostPath='http://localhost/$repoName$dist'
+rootHost=$hostStart$repoName$dist
+defaultLocalhostPath=$hostStart$repoName$dist
 tempDirNameString='__GH-page-content'
 proceedVar=false
 useDefaultLocalhostPath=true
@@ -31,26 +32,25 @@ echo ""
 echo "Would you like to proceed? Y or N | "
 read proceedVar
 
-echo "In order to proceed we need the path to the localhost of your repo. By default, if you are using PHP or other local dev environments, it would be something like this ... http://localhost/$repoName/dist/. Is http://localhost/$repoName$dist the path to your localhost? Y or N | "
+echo "In order to proceed we need the path to the localhost of your repo. By default, if you are using PHP or other local dev environments, it would be something like this ... $hostStart$repoName/dist/. Is $hostStart$repoName$dist the path to your localhost? Y or N | "
 read useDefaultLocalhostPath
 
 echo 'yourLocalhost 1: $yourLocalhost'
 
 if [[ $useDefaultLocalhostPath =~ ^[Yy]$ ]]
 	then
-		yourLocalhost="$defaultLocalhostPath"
+		yourLocalhost=$defaultLocalhostPath
 else
-	echo "Please enter/paste the path to the repo's localhost URL: ex. http://localhost/$repoName$dist"
+	echo "Please enter/paste the path to the repo's localhost URL: ex. $hostStart$repoName$dist"
 	read yourLocalhost
 fi
 
 if [[ $proceedVar =~ ^[Yy]$ ]]
 	then
-		rootHost='http://localhost/$repoName$dist'
+		rootHost=$hostStart$repoName$dist
 		echo "rootHost: $rootHost"
-		tempDirName="$repoName$tempDirNameString"
+		tempDirName=$repoName$tempDirNameString
 		echo "tempDirName: $tempDirName"
-		yourLocalhost="$defaultLocalhostPath"
 		echo "yourLocalhost: $yourLocalhost"
 
 		terminal-notifier -sound default -title 'Git: Migrating' -message 'Switching to gh-pages to pull updates and stash changes.'
