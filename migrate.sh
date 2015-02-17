@@ -13,12 +13,8 @@ root=$(pwd)
 yourLocalhost=''
 localhost=''
 framesetString='frameset.php?page-type='
-<<<<<<< HEAD
 pages=("home")
 htmlPages=("index_thumb-slider")
-=======
-pages=("index" "home")
->>>>>>> 4f77256a864e5398fecded0b73fae18ab7db9405
 phpModules=("videojs")
 tempModulueName=''
 phpExtension='.php'
