@@ -13,7 +13,7 @@ root=$(pwd)
 yourLocalhost=''
 localhost=''
 framesetString='frameset.php?page-type='
-pages=("home")
+pages=("index")
 htmlPages=("index_thumb-slider")
 phpModules=("videojs")
 tempModulueName=''
@@ -46,8 +46,12 @@ fi
 
 if [[ $proceedVar =~ ^[Yy]$ ]]
 	then
+		rootHost='http://localhost/$repoName$dist'
+		echo "rootHost: $rootHost"
 		tempDirName="$repoName$tempDirNameString"
 		echo "tempDirName: $tempDirName"
+		yourLocalhost="$defaultLocalhostPath"
+		echo "yourLocalhost: $yourLocalhost"
 
 		terminal-notifier -sound default -title 'Git: Migrating' -message 'Switching to gh-pages to pull updates and stash changes.'
 		git checkout gh-pages
