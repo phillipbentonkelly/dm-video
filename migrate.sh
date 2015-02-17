@@ -19,6 +19,7 @@ htmlPages=("index_thumb-slider")
 phpModules=("videojs")
 tempModulueName=''
 phpExtension='.php'
+htmlExtension='.html'
 
 echo "Welcome ... you are currently in: " 
 pwd
@@ -117,8 +118,8 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages from HTML files'
 			for i in "${htmlPages[@]}"
 			do
-				echo $localhost$i
-				wget $localhost$i
+				echo $localhost$i$htmlExtension
+				wget $localhost$i$htmlExtension
 				sleep 1
 				mv -f $framesetString$i $root/$tempDirName/$i.html
 
