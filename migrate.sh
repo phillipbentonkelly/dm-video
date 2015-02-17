@@ -73,7 +73,7 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			cd ..
 			mkdir $tempDirName
 			root=$(pwd)
-			localhost="$yourLocalhost$framesetString"
+			localhost="$yourLocalhost"
 
 			cp -a -f $root/$repoName/dist/images/. $root/$tempDirName/images
 			cp -a -f $root/$repoName/dist/fonts/. $root/$tempDirName/fonts
@@ -81,7 +81,7 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			cp -a -f $root/$repoName/dist/styles/. $root/$tempDirName/styles
 
 			sleep 3
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Module Pages'
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Module (PHP) Pages'
 			for g in "${phpModules[@]}"
 			do
 				$tempModulueName="$g.php"
@@ -100,7 +100,7 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			for i in "${pages[@]}"
 			do
 				echo $localhost$i
-				wget $localhost$i
+				wget $localhost$framesetString$i
 				sleep 1
 				mv -f $framesetString$i $root/$tempDirName/$i.html
 
