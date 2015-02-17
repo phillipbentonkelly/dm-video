@@ -1,27 +1,21 @@
 #!/bin/sh
 
 clear
-repoName='dm-video'
-dist='/dist/'
-rootHost='http://localhost/$repoName$dist'
-defaultLocalhostPath='http://localhost/$repoName$dist'
-tempDirNameString='__GH-page-content'
 proceedVar=false
 useDefaultLocalhostPath=true
-tempDirName='GH-page-content'
+rootHost='http://localhost/dm-video/dist/'
+defaultLocalhostPath='http://localhost/dm-video/dist/'
+repoName='dm-video'
+tempDirNameString='GH-page-content'
 root=$(pwd)
 yourLocalhost=''
 localhost=''
 framesetString='frameset.php?page-type='
-<<<<<<< HEAD
 pages=("home")
-htmlPages=("index_thumb-slider")
-=======
-pages=("index" "home")
->>>>>>> 4f77256a864e5398fecded0b73fae18ab7db9405
 phpModules=("videojs")
 tempModulueName=''
 phpExtension='.php'
+dist='/dist/'
 
 echo "Welcome ... you are currently in: " 
 pwd
@@ -35,7 +29,7 @@ echo ""
 echo "Would you like to proceed? Y or N | "
 read proceedVar
 
-echo "In order to proceed we need the path to the localhost of your repo. By default, if you are using PHP or other local dev environments, it would be something like this ... http://localhost/$repoName/dist/. Is http://localhost/$repoName$dist the path to your localhost? Y or N | "
+echo "In order to proceed we need the path to the localhost of your repo. By default, if you are using PHP or other local dev environments, it would be something like this ... http://localhost/dm-video/dist/. Is http://localhost/dm-video/dist/ the path to your localhost? Y or N | "
 read useDefaultLocalhostPath
 
 echo 'yourLocalhost 1: $yourLocalhost'
@@ -44,31 +38,26 @@ if [[ $useDefaultLocalhostPath =~ ^[Yy]$ ]]
 	then
 		yourLocalhost="$defaultLocalhostPath"
 else
-	echo "Please enter/paste the path to the repo's localhost URL: ex. http://localhost/$repoName$dist"
+	echo "Please enter/paste the path to the repo's localhost URL: ex. http://localhost/dm-video/dist/"
 	read yourLocalhost
 fi
 
 if [[ $proceedVar =~ ^[Yy]$ ]]
 	then
 		tempDirName="$repoName$tempDirNameString"
-		echo "tempDirName: $tempDirName"
 
-		terminal-notifier -sound default -title 'Git: Migrating' -message 'Switching to gh-pages to pull updates and stash changes.'
 		git checkout gh-pages
 		echo "- Switched to Pages branch"
 
 		sleep 6
 		git stash
-		terminal-notifier -sound default -title 'Git: Migrating' -message 'Stashed any local changes.'
 		echo "- Stashed any local changes"
 
 		sleep 3
 		git pull
-		terminal-notifier -sound default -title 'Git: Migrating' -message 'Pulled most recent.'
 		echo "- Pulled most recent"
 		git status
 
-		terminal-notifier -sound default -title 'Git: Migrating' -message 'Switch back to master branch.'
 		git checkout master
 
 		sleep 6
@@ -83,6 +72,7 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			cp -a -f $root/$repoName/dist/fonts/. $root/$tempDirName/fonts
 			cp -a -f $root/$repoName/dist/js/. $root/$tempDirName/js
 			cp -a -f $root/$repoName/dist/styles/. $root/$tempDirName/styles
+
 
 			sleep 3
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Module Pages'
@@ -100,22 +90,8 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			done
 
 			sleep 3
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages from PHP frameset'
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages'
 			for i in "${pages[@]}"
-			do
-				echo $localhost$i
-				wget $localhost$i
-				sleep 1
-				mv -f $framesetString$i $root/$tempDirName/$i.html
-
-				echo ""
-				echo "---------------------------------------------"
-				echo ""
-			done
-
-			sleep 3
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages from HTML files'
-			for i in "${htmlPages[@]}"
 			do
 				echo $localhost$i
 				wget $localhost$i
@@ -144,18 +120,18 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			echo "Removing the several resources from the gh-pages repo folder (folders and html pages)."
 			sleep 5
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Removing the several resources from the gh-pages repo folder (folders and html pages).'
-			rm -r $root/$repoName/images
-			rm -r $root/$repoName/fonts
-			rm -r $root/$repoName/js
-			rm -r $root/$repoName/styles
-			rm -f $root/$repoName/articles.html
-			rm -f $root/$repoName/home.html
-			rm -f $root/$repoName/index.html
+			rm -r $root/dm-video/images
+			rm -r $root/dm-video/fonts
+			rm -r $root/dm-video/js
+			rm -r $root/dm-video/styles
+			rm -f $root/dm-video/articles.html
+			rm -f $root/dm-video/home.html
+			rm -f $root/dm-video/index.html
 
 			echo "Copying the content of the temporary folder into the gh-pages repo folder."
 			sleep 5
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Copying the content of the temporary folder into the gh-pages repo folder.'
-			cp -a -f $root/$tempDirName/. $root/$repoName
+			cp -a -f $root/$tempDirName/. $root/dm
 
 			sleep 5
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Removing temporary folder'
@@ -181,7 +157,6 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			sleep 6
 			echo "DONE! Check your repo to make sure all folders match what is suppose to be in that branch."
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'DONE!!!'
-			
 		fi
 fi
 
