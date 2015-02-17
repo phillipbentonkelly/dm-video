@@ -13,7 +13,8 @@ root=$(pwd)
 yourLocalhost=''
 localhost=''
 framesetString='frameset.php?page-type='
-pages=("index" "home")
+pages=("home")
+htmlPages=("index_thumb-slider")
 phpModules=("videojs")
 tempModulueName=''
 phpExtension='.php'
@@ -95,8 +96,22 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			done
 
 			sleep 3
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages'
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages from PHP frameset'
 			for i in "${pages[@]}"
+			do
+				echo $localhost$i
+				wget $localhost$i
+				sleep 1
+				mv -f $framesetString$i $root/$tempDirName/$i.html
+
+				echo ""
+				echo "---------------------------------------------"
+				echo ""
+			done
+
+			sleep 3
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages from HTML files'
+			for i in "${htmlPages[@]}"
 			do
 				echo $localhost$i
 				wget $localhost$i
