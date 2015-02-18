@@ -14,7 +14,7 @@ root=$(pwd)
 yourLocalhost=''
 localhost=''
 framesetString='frameset.php?page-type='
-pages=("")
+pages=()
 htmlPages=("index_thumb-slider")
 phpModules=("videojs")
 tempModulueName=''
