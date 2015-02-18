@@ -87,46 +87,59 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 
 			sleep 3
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Module (PHP) Pages'
-			for g in "${phpModules[@]}"
-			do
-				$tempModulueName="$g.php"
-				echo "$rootHost$g$phpExtension"
-				wget "$rootHost$g$phpExtension"
-				sleep 1
-				mv -f $g$phpExtension $root/$tempDirName/$g.html
+			if [ ${#phpModules[@]} -gt 0 ];
+				then
+					for g in "${phpModules[@]}"
+					do
+						$tempModulueName="$g.php"
+						echo "$rootHost$g$phpExtension"
+						wget "$rootHost$g$phpExtension"
+						sleep 1
+						mv -f $g$phpExtension $root/$tempDirName/$g.html
 
-				echo ""
-				echo "---------------------------------------------"
-				echo ""
-			done
+						echo ""
+						echo "---------------------------------------------"
+						echo ""
+					done
+			fi
+			
 
 			sleep 3
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages from PHP frameset'
-			for i in "${pages[@]}"
-			do
-				echo $localhost$i
-				wget $localhost$framesetString$i
-				sleep 1
-				mv -f $framesetString$i $root/$tempDirName/$i.html
+			if [ ${#pages[@]} -gt 0 ];
+				then
+					for i in "${pages[@]}"
+					do
+						echo $localhost$i
+						wget $localhost$framesetString$i
+						sleep 1
+						mv -f $framesetString$i $root/$tempDirName/$i.html
 
-				echo ""
-				echo "---------------------------------------------"
-				echo ""
-			done
+						echo ""
+						echo "---------------------------------------------"
+						echo ""
+					done
+			fi
+
 
 			sleep 3
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages from HTML files'
-			for i in "${htmlPages[@]}"
-			do
-				echo $localhost$i$htmlExtension
-				wget $localhost$i$htmlExtension
-				sleep 1
-				mv -f $i$htmlExtension $root/$tempDirName/$i$htmlExtension
 
-				echo ""
-				echo "---------------------------------------------"
-				echo ""
-			done
+			if [ ${#htmlPages[@]} -gt 0 ];
+				then
+					for i in "${htmlPages[@]}"
+					do
+						echo $localhost$i$htmlExtension
+						wget $localhost$i$htmlExtension
+						sleep 1
+						mv -f $i$htmlExtension $root/$tempDirName/$i$htmlExtension
+
+						echo ""
+						echo "---------------------------------------------"
+						echo ""
+					done
+			fi
+			
 
 			cd $tempDirName
 			cp -f home.html index.html
