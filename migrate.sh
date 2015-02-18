@@ -54,6 +54,10 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 		echo "tempDirName: $tempDirName"
 		echo "yourLocalhost: $yourLocalhost"
 
+		echo "Array Length(pages): ${#pages[@]}"
+		echo "Array Length(phpModules): ${#phpModules[@]}"
+		echo "Array Length(htmlPages): ${#htmlPages[@]}"
+
 		terminal-notifier -sound default -title 'Git: Migrating' -message 'Switching to gh-pages to pull updates and stash changes.'
 		git checkout gh-pages
 		echo "- Switched to Pages branch"
