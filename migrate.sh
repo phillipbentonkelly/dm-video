@@ -1,10 +1,11 @@
 #!/bin/sh
 
 clear
+hostStart='http://localhost/'
 repoName='dm-video'
 dist='/dist/'
-rootHost='http://localhost/$repoName$dist'
-defaultLocalhostPath='http://localhost/$repoName$dist'
+rootHost=$hostStart$repoName$dist
+defaultLocalhostPath=$hostStart$repoName$dist
 tempDirNameString='__GH-page-content'
 proceedVar=false
 useDefaultLocalhostPath=true
@@ -13,11 +14,12 @@ root=$(pwd)
 yourLocalhost=''
 localhost=''
 framesetString='frameset.php?page-type='
-pages=("home")
-htmlPages=("index_thumb-slider")
+pages=()
+htmlPages=("index_thumb-slider" "skinned-player__v1")
 phpModules=("videojs")
 tempModulueName=''
 phpExtension='.php'
+htmlExtension='.html'
 
 echo "Welcome ... you are currently in: " 
 pwd
@@ -31,23 +33,30 @@ echo ""
 echo "Would you like to proceed? Y or N | "
 read proceedVar
 
-echo "In order to proceed we need the path to the localhost of your repo. By default, if you are using PHP or other local dev environments, it would be something like this ... http://localhost/$repoName/dist/. Is http://localhost/$repoName$dist the path to your localhost? Y or N | "
+echo "In order to proceed we need the path to the localhost of your repo. By default, if you are using PHP or other local dev environments, it would be something like this ... $hostStart$repoName/dist/. Is $hostStart$repoName$dist the path to your localhost? Y or N | "
 read useDefaultLocalhostPath
 
 echo 'yourLocalhost 1: $yourLocalhost'
 
 if [[ $useDefaultLocalhostPath =~ ^[Yy]$ ]]
 	then
-		yourLocalhost="$defaultLocalhostPath"
+		yourLocalhost=$defaultLocalhostPath
 else
-	echo "Please enter/paste the path to the repo's localhost URL: ex. http://localhost/$repoName$dist"
+	echo "Please enter/paste the path to the repo's localhost URL: ex. $hostStart$repoName$dist"
 	read yourLocalhost
 fi
 
 if [[ $proceedVar =~ ^[Yy]$ ]]
 	then
-		tempDirName="$repoName$tempDirNameString"
+		rootHost=$hostStart$repoName$dist
+		echo "rootHost: $rootHost"
+		tempDirName=$repoName$tempDirNameString
 		echo "tempDirName: $tempDirName"
+		echo "yourLocalhost: $yourLocalhost"
+
+		echo "Array Length(pages): ${#pages[@]}"
+		echo "Array Length(phpModules): ${#phpModules[@]}"
+		echo "Array Length(htmlPages): ${#htmlPages[@]}"
 
 		terminal-notifier -sound default -title 'Git: Migrating' -message 'Switching to gh-pages to pull updates and stash changes.'
 		git checkout gh-pages
@@ -73,7 +82,7 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			cd ..
 			mkdir $tempDirName
 			root=$(pwd)
-			localhost="$yourLocalhost$framesetString"
+			localhost="$yourLocalhost"
 
 			cp -a -f $root/$repoName/dist/images/. $root/$tempDirName/images
 			cp -a -f $root/$repoName/dist/fonts/. $root/$tempDirName/fonts
@@ -81,47 +90,60 @@ if [[ $proceedVar =~ ^[Yy]$ ]]
 			cp -a -f $root/$repoName/dist/styles/. $root/$tempDirName/styles
 
 			sleep 3
-			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Module Pages'
-			for g in "${phpModules[@]}"
-			do
-				$tempModulueName="$g.php"
-				echo "$rootHost$g$phpExtension"
-				wget "$rootHost$g$phpExtension"
-				sleep 1
-				mv -f $g$phpExtension $root/$tempDirName/$g.html
+			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Module (PHP) Pages'
+			if [ ${#phpModules[@]} -gt 0 ];
+				then
+					for g in "${phpModules[@]}"
+					do
+						$tempModulueName="$g.php"
+						echo "$rootHost$g$phpExtension"
+						wget "$rootHost$g$phpExtension"
+						sleep 1
+						mv -f $g$phpExtension $root/$tempDirName/$g.html
 
-				echo ""
-				echo "---------------------------------------------"
-				echo ""
-			done
+						echo ""
+						echo "---------------------------------------------"
+						echo ""
+					done
+			fi
+			
 
 			sleep 3
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages from PHP frameset'
-			for i in "${pages[@]}"
-			do
-				echo $localhost$i
-				wget $localhost$i
-				sleep 1
-				mv -f $framesetString$i $root/$tempDirName/$i.html
+			if [ ${#pages[@]} -gt 0 ];
+				then
+					for i in "${pages[@]}"
+					do
+						echo $localhost$i
+						wget $localhost$framesetString$i
+						sleep 1
+						mv -f $framesetString$i $root/$tempDirName/$i.html
 
-				echo ""
-				echo "---------------------------------------------"
-				echo ""
-			done
+						echo ""
+						echo "---------------------------------------------"
+						echo ""
+					done
+			fi
+
 
 			sleep 3
 			terminal-notifier -sound default -title 'Git: Migrating Master to GH-Pages' -message 'Creating Pages from HTML files'
-			for i in "${htmlPages[@]}"
-			do
-				echo $localhost$i
-				wget $localhost$i
-				sleep 1
-				mv -f $framesetString$i $root/$tempDirName/$i.html
 
-				echo ""
-				echo "---------------------------------------------"
-				echo ""
-			done
+			if [ ${#htmlPages[@]} -gt 0 ];
+				then
+					for i in "${htmlPages[@]}"
+					do
+						echo $localhost$i$htmlExtension
+						wget $localhost$i$htmlExtension
+						sleep 1
+						mv -f $i$htmlExtension $root/$tempDirName/$i$htmlExtension
+
+						echo ""
+						echo "---------------------------------------------"
+						echo ""
+					done
+			fi
+			
 
 			cd $tempDirName
 			cp -f home.html index.html

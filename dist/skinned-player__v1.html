@@ -114,6 +114,17 @@
 
                 myPlayer.catalog.load(video);
             });
+            myPlayer.autoplay(false);
+            console.log(myPlayer.buffered());
+            console.log(myPlayer.buffered().length);
+            console.log(myPlayer.bufferedPercent());
+
+        myPlayer.ready(function(){
+            console.log("ready");
+            console.log("PLAYING");
+
+            $('img.thumb').attr('src', this.poster());
+            myPlayer.play();
         });
 
         myPlayer.on('canplay', function(){
@@ -140,6 +151,8 @@
                 console.log("paused - currentTime: " + thisRef.currentTime());
                 console.log("paused(): " + thisRef.paused());
             }, 6000);
+        $('.videojs-next').on('click', function(){
+            myPlayer.catalog.getVideo( '4069062631001', function(error, video){ console.log("PLAYING NEXT VIDEO."); console.log(video); myPlayer.catalog.load(video); } );
         });
 
         //setTimeout(function(){ myPlayer.play(); }, 3000);
