@@ -48,12 +48,24 @@
                 <li>buffered</li>
                 <li>bufferedEnd</li>
                 <li>bufferedPercent</li>
+                <li>currentSrc</li>
+                <li>contentEl</li>
+                <li>currentTime</li>
+                <li>currentTime</li>
+                <li>remainingTime</li>
+                <li>pause</li>
+                <li>paused</li>
+                <li></li>
                 <li></li>
             </ul>
         </div>
         <div class="col">
             <h4>Player API: Events</h4>
             <ul>
+                <li>canplay</li>
+                <li>play</li>
+                <li></li>
+                <li></li>
                 <li></li>
                 <li></li>
             </ul>
@@ -67,6 +79,41 @@
     <script>
         var myPlayer = videojs('myPlayerID');
             myPlayer.addClass('dm-vPlayer');
+            myPlayer.autoplay(true);
+            myPlayer.controls(false);
+            myPlayer.catalog.myload = myPlayer.catalog.load;
+
+            /*console.log(myPlayer.catalog.myload);
+            myPlayer.createEI('div');*/
+
+        myPlayer.ready(function(){
+            console.log("ready");
+            console.log("loop: " + this.loop());
+            console.log("contentEl: ");
+            console.log(this.contentEl());
+            console.log("currentTime: " + this.currentTime());
+            console.log("this.duration(): " + this.duration());
+            console.log("this.controls(): " + this.controls());
+            console.log("this.children(): ");
+            console.log(this.children());
+            console.log("this.currentSrc(): " + this.currentSrc());
+
+            $('img.thumb').attr('src', this.poster());
+            //myPlayer.play();
+            console.log("play");
+        });
+
+        function bar(){
+            console.log("THIS IS THE CALLBACK!");
+        };
+
+        $('.videojs-next').on('click', function(){
+            myPlayer.catalog.getVideo( '4069062631001', function(error, video){ 
+                console.log("PLAYING NEXT VIDEO."); 
+                console.log(video);
+
+                myPlayer.catalog.load(video);
+            });
             myPlayer.autoplay(false);
             console.log(myPlayer.buffered());
             console.log(myPlayer.buffered().length);
@@ -84,6 +131,26 @@
             console.log("canplay");
         });
 
+        myPlayer.on('play', function(){
+            var thisRef = this;
+            console.log("playing");
+            console.log("playbackRate(): " + myPlayer.playbackRate());
+            console.log("duration: " + this.duration());
+            console.log("currentTime: " + this.currentTime());
+            console.log("preload: " + this.preload());
+            
+            setTimeout(function(){
+                console.log("currentTime: " + thisRef.currentTime());
+                console.log("playbackRate(): " + myPlayer.playbackRate());
+            }, 3000);
+
+            setTimeout(function(){
+                thisRef.pause();
+
+                console.log("playbackRate(): " + myPlayer.playbackRate());
+                console.log("paused - currentTime: " + thisRef.currentTime());
+                console.log("paused(): " + thisRef.paused());
+            }, 6000);
         $('.videojs-next').on('click', function(){
             myPlayer.catalog.getVideo( '4069062631001', function(error, video){ console.log("PLAYING NEXT VIDEO."); console.log(video); myPlayer.catalog.load(video); } );
         });
