@@ -2,21 +2,148 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>New Player</title>
+    <title>Skinned Player</title>
     <link href="//players.brightcove.net/videojs-overlay/lib/videojs-overlay.css" rel='stylesheet'>
     <link href="styles/css/skinned-player.css" rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <style>
+        .row {
+            clear: both;
+        }
+            .col {
+                float: left;
+            }
+    </style>
 </head>
 <body>
-    <video
-        data-account="245991542"
-        data-player="e4e7f4b2-cbf2-4f62-831b-6f43d6b7ed25"
-        data-embed="default"
-        data-video-id="4045097857001"
-        class="video-js" controls>
-    </video>
+    
+    <div class="row">
+        <div class="col">
+            <img class="thumb" />
+        </div>
+        <div class="col">
+            <video
+                id="myPlayerID"
+                data-account="245991542"
+                data-player="e4e7f4b2-cbf2-4f62-831b-6f43d6b7ed25"
+                data-embed="default"
+                data-video-id="4045097857001"
+                class="video-js" controls>
+            </video>
+
+            <a href="javascript:;" class="videojs-next">NEXT</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <h3>Used/Tested Features</h3>
+        <div class="col">
+            <h4>Player API: Methods</h4>
+            <ul>
+                <li>ready</li>
+                <li>play</li>
+                <li>autoplay</li>
+                <li>poster</li>
+                <li>buffered</li>
+                <li>bufferedEnd</li>
+                <li>bufferedPercent</li>
+                <li>currentSrc</li>
+                <li>contentEl</li>
+                <li>currentTime</li>
+                <li>currentTime</li>
+                <li>remainingTime</li>
+                <li>pause</li>
+                <li>paused</li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="col">
+            <h4>Player API: Events</h4>
+            <ul>
+                <li>canplay</li>
+                <li>play</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
     
     <script src="//players.brightcove.net/245991542/e4e7f4b2-cbf2-4f62-831b-6f43d6b7ed25_default/index.min.js"></script>
-    <script src="//players.brightcove.net/1507807800001/039eecc2-28ef-493c-aeef-306ed50896ca_default/index.min.js"></script>
+    <!--<script src="//players.brightcove.net/1507807800001/039eecc2-28ef-493c-aeef-306ed50896ca_default/index.min.js"></script>-->
     <script src="//players.brightcove.net/videojs-overlay/lib/videojs-overlay.js"></script>
+
+    <script>
+        var myPlayer = videojs('myPlayerID');
+            myPlayer.addClass('dm-vPlayer');
+            myPlayer.autoplay(true);
+            myPlayer.controls(false);
+            myPlayer.catalog.myload = myPlayer.catalog.load;
+
+            /*console.log(myPlayer.catalog.myload);
+            myPlayer.createEI('div');*/
+
+        myPlayer.ready(function(){
+            console.log("ready");
+            console.log("loop: " + this.loop());
+            console.log("contentEl: ");
+            console.log(this.contentEl());
+            console.log("currentTime: " + this.currentTime());
+            console.log("this.duration(): " + this.duration());
+            console.log("this.controls(): " + this.controls());
+            console.log("this.children(): ");
+            console.log(this.children());
+            console.log("this.currentSrc(): " + this.currentSrc());
+
+            $('img.thumb').attr('src', this.poster());
+            //myPlayer.play();
+            console.log("play");
+        });
+
+        function bar(){
+            console.log("THIS IS THE CALLBACK!");
+        };
+
+        $('.videojs-next').on('click', function(){
+            myPlayer.catalog.getVideo( '4069062631001', function(error, video){ 
+                console.log("PLAYING NEXT VIDEO."); 
+                console.log(video);
+
+                myPlayer.catalog.load(video);
+            });
+        });
+
+        myPlayer.on('canplay', function(){
+            console.log("canplay");
+        });
+
+        myPlayer.on('play', function(){
+            var thisRef = this;
+            console.log("playing");
+            console.log("playbackRate(): " + myPlayer.playbackRate());
+            console.log("duration: " + this.duration());
+            console.log("currentTime: " + this.currentTime());
+            console.log("preload: " + this.preload());
+            
+            setTimeout(function(){
+                console.log("currentTime: " + thisRef.currentTime());
+                console.log("playbackRate(): " + myPlayer.playbackRate());
+            }, 3000);
+
+            setTimeout(function(){
+                thisRef.pause();
+
+                console.log("playbackRate(): " + myPlayer.playbackRate());
+                console.log("paused - currentTime: " + thisRef.currentTime());
+                console.log("paused(): " + thisRef.paused());
+            }, 6000);
+        });
+
+        //setTimeout(function(){ myPlayer.play(); }, 3000);
+        console.log(myPlayer);
+    </script>
 </body> 
 </html>
