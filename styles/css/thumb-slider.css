@@ -1,23 +1,23 @@
 /*temporary stylings*/
-/* line 2, ../../../../sass/partials/page/modules/thumb-slider.scss */
+/* line 2, ../sass/thumb-slider.scss */
 .main-content {
   font-family: OpenSans;
   font-weight: 600;
   font-size: 14px;
 }
 
-/* line 8, ../../../../sass/partials/page/modules/thumb-slider.scss */
+/* line 8, ../sass/thumb-slider.scss */
 .thumbslider {
   width: 100%;
   overflow: hidden;
 }
 
-/* line 13, ../../../../sass/partials/page/modules/thumb-slider.scss */
+/* line 13, ../sass/thumb-slider.scss */
 .thumbslider__nav {
   display: none;
 }
 
-/* line 17, ../../../../sass/partials/page/modules/thumb-slider.scss */
+/* line 17, ../sass/thumb-slider.scss */
 .thumbslider__title {
   margin: 0;
   padding: 10px 0;
@@ -27,21 +27,21 @@
   text-transform: uppercase;
 }
 
-/* line 26, ../../../../sass/partials/page/modules/thumb-slider.scss */
+/* line 26, ../sass/thumb-slider.scss */
 .thumbslider__title:before {
   content: "[";
   color: #9b1518;
   margin-bottom: 5px;
 }
 
-/* line 32, ../../../../sass/partials/page/modules/thumb-slider.scss */
+/* line 32, ../sass/thumb-slider.scss */
 .thumbslider__title:after {
   content: "]";
   color: #9b1518;
   margin-bottom: 5px;
 }
 
-/* line 38, ../../../../sass/partials/page/modules/thumb-slider.scss */
+/* line 38, ../sass/thumb-slider.scss */
 .thumbslider__list {
   width: 100%;
   margin: 0;
@@ -50,30 +50,30 @@
   white-space: nowrap;
 }
 
-/* line 46, ../../../../sass/partials/page/modules/thumb-slider.scss */
+/* line 46, ../sass/thumb-slider.scss */
 .thumbslider__item {
   width: 60%;
   display: inline-block;
   margin-right: 5%;
 }
 
-/* line 52, ../../../../sass/partials/page/modules/thumb-slider.scss */
+/* line 52, ../sass/thumb-slider.scss */
 .thumbslider__item:last-child {
   margin-right: 40%;
 }
 
-/* line 56, ../../../../sass/partials/page/modules/thumb-slider.scss */
+/* line 56, ../sass/thumb-slider.scss */
 .thumbslider__item a {
   text-decoration: none;
   color: black;
 }
 
-/* line 61, ../../../../sass/partials/page/modules/thumb-slider.scss */
+/* line 61, ../sass/thumb-slider.scss */
 .thumbslider__item img {
   width: 100%;
 }
 
-/* line 65, ../../../../sass/partials/page/modules/thumb-slider.scss */
+/* line 65, ../sass/thumb-slider.scss */
 .thumbslider__item-title {
   font-size: 10px;
   font-family: OpenSans;
@@ -84,44 +84,44 @@
 }
 
 @media screen and (min-width: 450px) {
-  /* line 75, ../../../../sass/partials/page/modules/thumb-slider.scss */
+  /* line 75, ../sass/thumb-slider.scss */
   .thumbslider__item {
     width: 33.33%;
     margin-right: 3%;
   }
 
-  /* line 80, ../../../../sass/partials/page/modules/thumb-slider.scss */
+  /* line 80, ../sass/thumb-slider.scss */
   .thumbslider__list {
     padding: 0 40% 0 10%;
   }
 }
 @media screen and (min-width: 768px) {
-  /* line 86, ../../../../sass/partials/page/modules/thumb-slider.scss */
+  /* line 86, ../sass/thumb-slider.scss */
   .thumbslider__item {
     width: 20%;
     margin-right: 2%;
   }
 
-  /* line 91, ../../../../sass/partials/page/modules/thumb-slider.scss */
+  /* line 91, ../sass/thumb-slider.scss */
   .thumbslider__list {
     padding: 0 20% 0 5%;
   }
 }
 @media screen and (min-width: 960px) {
-  /* line 97, ../../../../sass/partials/page/modules/thumb-slider.scss */
+  /* line 97, ../sass/thumb-slider.scss */
   .thumbslider__list {
     padding: 0;
     overflow: initial;
   }
 
-  /* line 102, ../../../../sass/partials/page/modules/thumb-slider.scss */
+  /* line 102, ../sass/thumb-slider.scss */
   .thumbslider__list-wrapper {
     position: relative;
     margin: 0 10%;
     /*overflow: hidden;*/
   }
 
-  /* line 108, ../../../../sass/partials/page/modules/thumb-slider.scss */
+  /* line 108, ../sass/thumb-slider.scss */
   .thumbslider__nav {
     display: block;
     position: absolute;
@@ -137,19 +137,19 @@
     text-align: center;
   }
 
-  /* line 123, ../../../../sass/partials/page/modules/thumb-slider.scss */
+  /* line 123, ../sass/thumb-slider.scss */
   .thumbslider__nav-right {
     right: -10%;
     padding: 15px 0 0 3px;
   }
 
-  /* line 128, ../../../../sass/partials/page/modules/thumb-slider.scss */
+  /* line 128, ../sass/thumb-slider.scss */
   .thumbslider__nav-left {
     left: -10%;
     padding: 15px 0 3px 0;
   }
 
-  /* line 133, ../../../../sass/partials/page/modules/thumb-slider.scss */
+  /* line 133, ../sass/thumb-slider.scss */
   .thumbslider__nav:hover {
     background: rgba(151, 21, 24, 0.7);
   }
