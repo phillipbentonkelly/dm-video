@@ -55,6 +55,15 @@
                 <li>remainingTime</li>
                 <li>pause</li>
                 <li>paused</li>
+                <li>isFullscreen</li>
+                <li>language</li>
+                <li>load</li>
+                <li>loop</li>
+                <li>muted</li>
+                <li>pause</li>
+                <li>preload</li>
+                <li>poster</li>
+                <li></li>
                 <li></li>
                 <li></li>
             </ul>
@@ -64,8 +73,12 @@
             <ul>
                 <li>canplay</li>
                 <li>play</li>
-                <li></li>
-                <li></li>
+                <li>durationchange</li>
+                <li>ended</li>
+                <li>firstplay</li>
+                <li>fullscreenchange</li>
+                <li>seeked</li>
+                <li>seeking</li>
                 <li></li>
                 <li></li>
             </ul>
@@ -81,10 +94,8 @@
             myPlayer.addClass('dm-vPlayer');
             myPlayer.autoplay(true);
             myPlayer.controls(false);
+            myPlayer.loop(true);
             myPlayer.catalog.myload = myPlayer.catalog.load;
-
-            /*console.log(myPlayer.catalog.myload);
-            myPlayer.createEI('div');*/
 
         myPlayer.ready(function(){
             console.log("ready");
@@ -97,9 +108,9 @@
             console.log("this.children(): ");
             console.log(this.children());
             console.log("this.currentSrc(): " + this.currentSrc());
+            console.log("language: " + this.language());
 
             $('img.thumb').attr('src', this.poster());
-            //myPlayer.play();
             console.log("play");
         });
 
@@ -114,10 +125,11 @@
 
                 myPlayer.catalog.load(video);
             });
-            myPlayer.autoplay(false);
-            console.log(myPlayer.buffered());
-            console.log(myPlayer.buffered().length);
-            console.log(myPlayer.bufferedPercent());
+            //myPlayer.autoplay(false);
+            console.log("buffered: " + myPlayer.buffered());
+            console.log("buffered.length(): " + myPlayer.buffered().length);
+            console.log("bufferedPercent: " + myPlayer.bufferedPercent());
+        });
 
         myPlayer.ready(function(){
             console.log("ready");
@@ -133,13 +145,13 @@
 
         myPlayer.on('play', function(){
             var thisRef = this;
-            console.log("playing");
+            console.log("PLAYING");
             console.log("playbackRate(): " + myPlayer.playbackRate());
             console.log("duration: " + this.duration());
             console.log("currentTime: " + this.currentTime());
             console.log("preload: " + this.preload());
             
-            setTimeout(function(){
+            /*setTimeout(function(){
                 console.log("currentTime: " + thisRef.currentTime());
                 console.log("playbackRate(): " + myPlayer.playbackRate());
             }, 3000);
@@ -150,12 +162,91 @@
                 console.log("playbackRate(): " + myPlayer.playbackRate());
                 console.log("paused - currentTime: " + thisRef.currentTime());
                 console.log("paused(): " + thisRef.paused());
-            }, 6000);
-        $('.videojs-next').on('click', function(){
-            myPlayer.catalog.getVideo( '4069062631001', function(error, video){ console.log("PLAYING NEXT VIDEO."); console.log(video); myPlayer.catalog.load(video); } );
+            }, 6000);*/
         });
 
-        //setTimeout(function(){ myPlayer.play(); }, 3000);
+        myPlayer.on('firstplay', function(){
+            console.log("FIRST PLAY(firstplay)");
+        });
+
+        myPlayer.on('durationchange', function(){
+            console.log("durationchange(duration): " + this.duration());
+        });
+
+        myPlayer.on('ended', function(){
+            console.log("ended: Playback ended");
+        });
+
+        myPlayer.on('pause', function(){
+            console.log("pause: Playback paused");
+        });
+
+        myPlayer.on('play', function(){
+            console.log("play: Playback play");
+        });
+
+        myPlayer.on('pause', function(){
+            console.log("pause: Playback paused");
+        });
+
+        myPlayer.on('fullscreenchange', function(){
+            console.log("fullscreenchange: " + this.isFullscreen());
+        });
+
+        myPlayer.on('progress', function(){
+            //console.log("Progressing: Fired while the user agent is downloading media data");
+        });
+
+        myPlayer.on('resize', function(){
+            console.log("resize: Fired when the width and/or height of the component changes");
+        });
+
+        myPlayer.on('seeked', function(){
+            //this.pause();
+            console.log("seeked: Fired when the player has finished jumping to a new time | currentTime: " + Math.round(this.currentTime()) + " | remainingTime: " + Math.round(this.remainingTime()));
+        });
+
+        myPlayer.on('seeking', function(){
+            console.log("seeking: Fired whenever the player is jumping to a new time | currentTime: " + Math.round(this.currentTime()) + " | remainingTime: " + Math.round(this.remainingTime()));
+        });
+
+        myPlayer.on('timeupdate', function(){
+            //console.log("timeupdate: Fired when the current playback position has changed: " + Math.round(this.currentTime()));
+        });
+
+        myPlayer.on('volumechange', function(){
+            console.log("volumechange: Fired while the user agent is downloading media data | volume: " + (Math.round(this.volume()*100)) + '%');
+        });
+
+        myPlayer.on('waiting', function(){
+            console.log("waiting: Fired whenever the media begins waiting");
+        });
+
+        myPlayer.on('loadstart', function(){
+            console.log("loadstart: Fired when the user agent begins looking for media data");
+        });
+
+        myPlayer.on('loadeddata', function(){
+            console.log("loadeddata: Fired when the player has downloaded data at the current playback position");
+        });
+
+        myPlayer.on('loadedmetadata', function(){
+            console.log("loadedmetadata: Fired when the player has initial duration and dimension information");
+            console.log(myPlayer);
+        });
+
+        myPlayer.on('loadedalldata', function(){
+            console.log("loadedalldata: Fired when the player has finished downloading the source data");
+        });
+
+        $('.videojs-next').on('click', function(){
+            myPlayer.catalog.getVideo( '4069062631001', function(error, video){
+                console.log("PLAYING NEXT VIDEO."); 
+                console.log(video); 
+                myPlayer.catalog.load(video);
+            });
+        });
+
         console.log(myPlayer);
     </script>
 </body> 
