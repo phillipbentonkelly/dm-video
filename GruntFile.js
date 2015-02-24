@@ -83,7 +83,7 @@ module.exports = function(grunt) {
 						module: true,
 						document: true
 					}, 
-					force: true,
+					force: false,
 					reporter: require('jshint-stylish')
 				}
 			}
