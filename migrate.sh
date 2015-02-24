@@ -15,7 +15,7 @@ yourLocalhost=''
 localhost=''
 framesetString='frameset.php?page-type='
 pages=()
-htmlPages=("index" "index_thumb-slider" "skinned-player__v1")
+htmlPages=("index" "vid-ecosystem" "index_thumb-slider" "skinned-player__v1")
 phpModules=("videojs")
 tempModulueName=''
 phpExtension='.php'

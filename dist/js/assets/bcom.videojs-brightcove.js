@@ -21,17 +21,23 @@ var videoJSWidgetObj = {};
     	init: function( params ){
     		/*
 				params = {
-					vidsObjs: [ { videojs('myPlayerID') }, { videojs('myPlayerID') } ]
+					featuredVid: { videojs('featutedVid') },
+					featuredIndex: 0,
+					vidsObjs: [ { videojs('featuredVid') }, { videojs('sidebarPlayer') } ]
 				}
     		*/
     		//(!params.videoObjs)? {} : for(var u = 0; u < params.videoObjs.length; u++){ console.log(params.videoObjs[u]); }
     		BCMAPI.token = _data.apis.tokens[0];
-    		//BCMAPI.callback = "this.initVideo";
-
-    		console.log(BCMAPI.find("video_by_id", 4030141014001));
+    		BCMAPI.callback = "this.handle";
+    		BCMAPI.find("video_by_id", 4030141014001);
 
     		console.log(_data.apis.tokens[0]);
     	},
+    	handle: function(pResponse) {
+	        for (var pVideo in pResponse.items) {
+	            alert(pVideo.name);
+	        }
+	    },
     	initVideo: function( params ){
     		console.log("initVideo....");
     	}
@@ -42,3 +48,14 @@ $(function(){
 	videoJSWidgetObj = VideoJS();
 	videoJSWidgetObj.init();
 });
+
+function handle (pResponse) {
+    /*for (var pVideo in pResponse.items) {
+        alert(pVideo.name);
+    }*/
+
+    console.log(pResponse);
+}
+
+
+
