@@ -6,21 +6,21 @@ module.slideLeft = function(buttonRef) {
 	curSlider.animate({
 		'margin-left':'+=' + module.$slideDistance
 	});
-}
+};
 
 module.slideRight = function(buttonRef) {
 	var curSlider = buttonRef.parent().parent('.thumbslider__list-wrapper').find('.thumbslider__list');
 	curSlider.animate({
 		'margin-left':'-=' + module.$slideDistance
 	});
-}
+};
 
 module.eventHandlers = function() {
 	module.$leftNav.click(function() {
-		module.slideLeft($(this))
+		module.slideLeft($(this));
 	});
 	module.$rightNav.click(function() {
-		module.slideRight($(this))
+		module.slideRight($(this));
 	});
 };
 
