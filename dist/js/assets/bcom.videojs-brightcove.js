@@ -100,6 +100,8 @@ var videoJSWidgetObj = {};
     		var thisApiUrl = _data.apis.protocol + _data.apis.baseURL + _data.apis.media.commands[0] + '&token=' + _data.apis.tokens[2];
     			if(typeof(params.page_size) !== 'undefined')
     				thisApiUrl = thisApiUrl + '&' + _data.apis.media.filters[5] + params.page_size;
+    			if(typeof(params.tag) !== 'undefined')
+    				thisApiUrl = thisApiUrl + '&all=tag:' + params.tag;
     			if(typeof(params.sort) !== 'undefined')
     				thisApiUrl = thisApiUrl + '&sort_by' + _data.apis.media.filters[7] + params.sort;
 
@@ -129,27 +131,7 @@ var videoJSWidgetObj = {};
     };
 })(window, jQuery);
 
-var bc_contentLists = {
-	'recent': {}
-};
 
-$(function(){
-	videoJSWidgetObj = VideoJS();
-	videoJSWidgetObj.init(
-		{
-			featuredIndex: 0,
-			videoObjsRefs: [ 'featuredPlayer', 'sidebarPlayer'/**/ ]
-		}
-	);
-
-	videoJSWidgetObj.bindThumbToFeaturedPlayer( '.video-eco__thumbslider--item a', videoJSWidgetObj.getPlayerObjById(4030141014001));
-});
-
-function vidEco_buildCarousel( data ){
-	console.log("initUI");
-	console.log(data);
-	console.log("------------------------");
-}
 
 
 

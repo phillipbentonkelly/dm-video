@@ -73,6 +73,57 @@
         <script>
             var myPlayer1 = videojs('featuredPlayer');
                 myPlayer1.autoplay(true);
+
+            $(function(){
+                videoJSWidgetObj = VideoJS();
+                videoJSWidgetObj.init(
+                    {
+                        featuredIndex: 0,
+                        videoObjsRefs: [ 'featuredPlayer', 'sidebarPlayer'/**/ ]
+                    }
+                );
+
+                videoJSWidgetObj.bindThumbToFeaturedPlayer( '.video-eco__thumbslider--item a', videoJSWidgetObj.getPlayerObjById(4030141014001));
+                /*videoJSWidgetObj.getVideos({'page_size': 20,'sort': 'DESC'});
+                videoJSWidgetObj.getVideos({ 'fn': 'vidEco_buildCarousel', 'page_size': 20, 'sort': 'DESC' });
+                http://api.brightcove.com/services/library?command=search_videos&all=tag:entertainment&token=mSs7049lqF2NZe_nAJNIDg1FQDco9YtZEk8YfbwYAEo.
+                */
+                videoJSWidgetObj.getVideos({ 'fn': 'vidEco_buildCarousel_default', 'page_size': 20, 'sort': 'DESC' });
+                videoJSWidgetObj.getVideos({ 'fn': 'vidEco_buildCarousel__entertainment', 'page_size': 20, 'sort': 'DESC', 'tag': 'entertainment' });
+                videoJSWidgetObj.getVideos({ 'fn': 'vidEco_buildCarousel__food', 'page_size': 20, 'sort': 'DESC', 'tag': 'food' });
+                videoJSWidgetObj.getVideos({ 'fn': 'vidEco_buildCarousel__technology', 'page_size': 20, 'sort': 'DESC', 'tag': 'technology' });
+                videoJSWidgetObj.getVideos({ 'fn': 'vidEco_buildCarousel__health', 'page_size': 20, 'sort': 'DESC', 'tag': 'health' });
+            });
+
+            function vidEco_buildCarousel_default( data ){
+                console.log("initUI");
+                console.log(data);
+                console.log("------------------------");
+            }
+
+            function vidEco_buildCarousel__entertainment( data ){
+                console.log("initUI: entertainment");
+                console.log(data);
+                console.log("------------------------");
+            }
+
+            function vidEco_buildCarousel__food( data ){
+                console.log("initUI: food");
+                console.log(data);
+                console.log("------------------------");
+            }
+
+            function vidEco_buildCarousel__technology( data ){
+                console.log("initUI: technology");
+                console.log(data);
+                console.log("------------------------");
+            }
+
+            function vidEco_buildCarousel__health( data ){
+                console.log("initUI: health");
+                console.log(data);
+                console.log("------------------------");
+            }
         </script>
 
 
